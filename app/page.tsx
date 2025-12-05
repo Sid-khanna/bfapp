@@ -16,7 +16,7 @@ const stats = [
   { label: "Loyalty", value: 100 }, // locked at 100
   { label: "Communication", value: 87 },
   { label: "Emotional Intelligence", value: 82 },
-  { label: "Chaos (fun, not toxic)", value: 68 },
+  { label: "Chaos (fun, not toxic)", value: 62 },
 ];
 
 const perks = [
@@ -299,7 +299,7 @@ export default function Home() {
                       marginTop: "0.25rem",
                     }}
                   >
-                    Toronto-based. Emotionally available. Slightly delusional,
+                    Emotionally available. Slightly delusional,
                     but in a fun way. Now accepting applications for shared
                     hoodies, playlists, and future inside jokes.
                   </div>
@@ -462,10 +462,11 @@ export default function Home() {
                   const adjustedValue =
                     stat.label === "Loyalty"
                       ? 100
+                      : stat.label === "Chaos (fun, not toxic)" && honestMode
+                      ? Math.min(stat.value + 15, 100) // chaos goes UP in honest mode
                       : honestMode
-                      ? Math.max(stat.value - 5, 0)
+                      ? Math.max(stat.value - 5, 0) // others go slightly down
                       : stat.value;
-
                   return (
                     <div
                       key={stat.label}
