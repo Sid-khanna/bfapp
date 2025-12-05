@@ -268,7 +268,7 @@ export default function Home() {
                     }}
                   >
                     Toronto-based. Emotionally available. Accepting interviews
-                    for the role of boyfriend with long-term growth potential.
+                    for the role of my girlfriend with long-term growth potential.
                   </div>
                 </div>
 
