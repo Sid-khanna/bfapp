@@ -24,7 +24,7 @@ const perks = [
   "Late-night drives + emotionally loaded playlists",
   "Aggressive ‘did you eat?’ reminders",
   "Will listen to you rant about work like it’s a Netflix show",
-  "Random voice notes when something reminds me of you",
+  "Random messages when something reminds me of you",
   "Built you a whole website, so… commitment is clearly not the issue",
 ];
 
