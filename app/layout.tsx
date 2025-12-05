@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Apply to Date Sid",
+  title: "Sid | Boyfriend Application",
   description: "Recruiting for emotional availability and shared snacks.",
 };
 
