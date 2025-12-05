@@ -303,6 +303,46 @@ export default function Home() {
                     but in a fun way. Now accepting applications for shared
                     hoodies, playlists, and future inside jokes.
                   </div>
+                                    <div
+                    style={{
+                      fontSize: "0.85rem",
+                      opacity: 0.85,
+                      marginTop: "0.6rem",
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "0.6rem",
+                    }}
+                  >
+                    <a
+                      href="https://instagram.com/sid_khanna__"
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        padding: "0.35rem 0.75rem",
+                        borderRadius: "999px",
+                        border: "1px solid rgba(148,163,184,0.8)",
+                        textDecoration: "none",
+                        color: "#e5e7eb",
+                        fontSize: "0.8rem",
+                      }}
+                    >
+                      📸 @YOUR_INSTAGRAM
+                    </a>
+                    <a
+                      href="mailto:siddharth.khanna1@gmail.com"
+                      style={{
+                        padding: "0.35rem 0.75rem",
+                        borderRadius: "999px",
+                        border: "1px solid rgba(148,163,184,0.8)",
+                        textDecoration: "none",
+                        color: "#e5e7eb",
+                        fontSize: "0.8rem",
+                      }}
+                    >
+                      📧 YOUR_EMAIL@example.com
+                    </a>
+                  </div>
+
                 </div>
 
                 <div
@@ -986,6 +1026,77 @@ export default function Home() {
                 </>
               )}
             </motion.section>
+            {/* CONTACT SECTION */}
+            <motion.section
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              style={{
+                borderRadius: "1rem",
+                padding: "1.5rem",
+                background: "rgba(15,23,42,0.95)",
+                border: "1px solid rgba(51,65,85,1)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
+              <div style={{ fontSize: "1.1rem", fontWeight: 600 }}>
+                Next Steps
+              </div>
+              <div style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+                If this application has passed your initial screening, further communication
+                may proceed through the following verified channels:
+              </div>
+            
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "0.75rem",
+                  marginTop: "0.5rem",
+                }}
+              >
+                <a
+                  href="https://instagram.com/sid_khanna__"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    padding: "0.85rem",
+                    borderRadius: "0.75rem",
+                    background: "rgba(15,23,42,0.95)",
+                    border: "1px solid rgba(51,65,85,1)",
+                    textDecoration: "none",
+                    color: "#e5e7eb",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  📸 Instagram
+                  <div style={{ fontSize: "0.8rem", opacity: 0.7 }}>
+                    @YOUR_INSTAGRAM
+                  </div>
+                </a>
+            
+                <a
+                  href="mailto:siddharth.khanna1@gmail.com"
+                  style={{
+                    padding: "0.85rem",
+                    borderRadius: "0.75rem",
+                    background: "rgba(15,23,42,0.95)",
+                    border: "1px solid rgba(51,65,85,1)",
+                    textDecoration: "none",
+                    color: "#e5e7eb",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  📧 Email
+                  <div style={{ fontSize: "0.8rem", opacity: 0.7 }}>
+                    YOUR_EMAIL@example.com
+                  </div>
+                </a>
+              </div>
+            </motion.section>
+
 
             {/* FOOTER / CONTRACT TERMS */}
             <section
