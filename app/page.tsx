@@ -65,17 +65,17 @@ const interviewQuestions = [
 ];
 
 const references = [
-  "“Shows up with snacks and unsolicited life advice.” – Former situationship",
-  "“Thinks he’s the comic relief. Unfortunately… he is.” – Close friend",
+  "“Will turn your entire chat into his FYP by sending way too many reels.” – Group chat",
+  "“Claims he doesn’t know every song. Evidence suggests otherwise.” – Close friend",
   "“Hard worker, would not trust him with a ‘skip intro’ button.” – Netflix",
   "“Exceeded expectations in emotional support, underperformed in sleeping early.” – Gym partner",
 ];
 
 const redFlags = [
   "Overthinks everything, including this website.",
-  "Will send you songs instead of saying how he feels.",
-  "Occasionally forgets he’s not on an F1 pit wall strategy team.",
-  "Says “one more episode” and lies every single time.",
+  "Says “I’ll be there in 10” knowing it means 20.",
+  "Sees a cliff edge and thinks ‘great place to sit and think.’",
+  "Chronically lies to himself about bedtime.",
 ];
 
 // typewriter hook for intro terminal
