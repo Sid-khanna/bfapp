@@ -35,18 +35,18 @@ const interviewQuestions = [
       { text: "Coffee + walk", score: 10 },
       { text: "Gym + food", score: 10 },
       { text: "Couch, shows, and ordering in", score: 10 },
-      { text: "Spontaneous adventure day", score: 10 }, 
+      { text: "Spontaneous adventure day", score: 10 },
     ],
   },
   {
     question: "When we argue, what’s your style?",
     options: [
-      { text: "Talk it out now", score: 10 }, 
+      { text: "Talk it out now", score: 10 },
       { text: "Need 10–30 mins then talk", score: 10 },
-      { text: "Send memes first, then talk", score: 10 }, 
+      { text: "Send memes first, then talk", score: 10 },
       {
         text: "Disappear for 2 days (wrong answer btw)",
-        score: 0, 
+        score: 0, // only wrong one
       },
     ],
   },
@@ -58,12 +58,25 @@ const interviewQuestions = [
       { text: "Travel + exploring new places", score: 10 },
       {
         text: "Watching F1 and pretending we understand strategy",
-        score: 10, 
+        score: 10,
       },
     ],
   },
 ];
 
+const references = [
+  "“Shows up with snacks and unsolicited life advice.” – Former situationship",
+  "“Thinks he’s the comic relief. Unfortunately… he is.” – Close friend",
+  "“Hard worker, would not trust him with a ‘skip intro’ button.” – Netflix",
+  "“Exceeded expectations in emotional support, underperformed in sleeping early.” – Gym partner",
+];
+
+const redFlags = [
+  "Overthinks everything, including this website.",
+  "Will send you songs instead of saying how he feels.",
+  "Occasionally forgets he’s not on an F1 pit wall strategy team.",
+  "Says “one more episode” and lies every single time.",
+];
 
 // typewriter hook for intro terminal
 function useTypewriter(lines: string[], typingSpeed = 40, lineDelay = 500) {
@@ -123,8 +136,12 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const compatibilityScore = (() => {
-    if (!answers.length) return 0;
+  const { compatibilityScore, compatibilityLabel } = (() => {
+    const maxScore = interviewQuestions.reduce((acc, q) => {
+      const best = Math.max(...q.options.map((o) => o.score));
+      return acc + best;
+    }, 0);
+
     let score = 0;
     interviewQuestions.forEach((q, i) => {
       const a = answers[i];
@@ -132,18 +149,26 @@ export default function Home() {
       score += q.options[a].score;
     });
 
-    return Math.min(
-      100,
-      Math.round((score / (interviewQuestions.length * 10)) * 100)
-    );
-  })();
+    const pct =
+      maxScore === 0 ? 0 : Math.min(100, Math.round((score / maxScore) * 100));
 
-  const compatibilityLabel =
-    compatibilityScore > 85
-      ? "High Potential Candidate"
-      : compatibilityScore > 60
-      ? "Strong Match Potential"
-      : "Needs Further Interviewing";
+    let label: string;
+    if (pct >= 90) {
+      label =
+        "HR recommends immediate offer. Lock him in before another team poaches him.";
+    } else if (pct >= 70) {
+      label =
+        "Strong cultural fit. Recommend second-round interview (coffee, then food).";
+    } else if (pct >= 40) {
+      label =
+        "Potential, but requires onboarding and maybe a few ‘what are we?’ conversations.";
+    } else {
+      label =
+        "System suggests friendship… but HR won’t stop you if you like red flags.";
+    }
+
+    return { compatibilityScore: pct, compatibilityLabel: label };
+  })();
 
   const handleAnswer = (optionIndex: number) => {
     const updated = [...answers];
@@ -226,7 +251,7 @@ export default function Home() {
           </motion.section>
         ) : (
           <>
-            {/* HERO CARD (NO TERMINAL NOW) */}
+            {/* HERO CARD */}
             <motion.section
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -274,8 +299,9 @@ export default function Home() {
                       marginTop: "0.25rem",
                     }}
                   >
-                    Toronto-based. Emotionally available. Accepting interviews
-                    for the role of my girlfriend with long-term growth potential.
+                    Toronto-based. Emotionally available. Slightly delusional,
+                    but in a fun way. Now accepting applications for shared
+                    hoodies, playlists, and future inside jokes.
                   </div>
                 </div>
 
@@ -573,7 +599,7 @@ export default function Home() {
               </div>
             </motion.section>
 
-            {/* PERKS */}
+            {/* PERKS – vertical grid */}
             <motion.section
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -590,18 +616,23 @@ export default function Home() {
               }}
             >
               <div>
-                <div style={{ fontSize: "1.1rem", fontWeight: 600 }}>
+                <div
+                  style={{ fontSize: "1.1rem", fontWeight: 600 }}
+                >
                   Compensation & Benefits (for you)
                 </div>
-                <div style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+                <div
+                  style={{ fontSize: "0.9rem", opacity: 0.8 }}
+                >
                   What you get if you hire this particular boyfriend.
                 </div>
               </div>
-            
+
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(220px, 1fr))",
                   gap: "0.9rem",
                 }}
               >
@@ -623,13 +654,129 @@ export default function Home() {
               </div>
             </motion.section>
 
+            {/* REFERENCES */}
+            <motion.section
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              style={{
+                borderRadius: "1rem",
+                padding: "1.5rem",
+                background: "rgba(15,23,42,0.95)",
+                border: "1px solid rgba(51,65,85,1)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  marginBottom: "0.25rem",
+                }}
+              >
+                References (Highly Biased)
+              </div>
+              <div
+                style={{
+                  fontSize: "0.9rem",
+                  opacity: 0.8,
+                  marginBottom: "0.5rem",
+                }}
+              >
+                External feedback from previous stakeholders in the “Sid
+                experience”.
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "0.75rem",
+                }}
+              >
+                {references.map((ref) => (
+                  <motion.div
+                    key={ref}
+                    whileHover={{ y: -3, scale: 1.01 }}
+                    style={{
+                      padding: "0.9rem",
+                      borderRadius: "0.8rem",
+                      background: "rgba(15,23,42,0.95)",
+                      border: "1px solid rgba(51,65,85,1)",
+                      fontSize: "0.85rem",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    {ref}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.section>
+
+            {/* RED FLAGS */}
+            <motion.section
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{
+                borderRadius: "1rem",
+                padding: "1.5rem",
+                background: "rgba(15,23,42,0.95)",
+                border: "1px solid rgba(239,68,68,0.6)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                <span style={{ fontSize: "1.2rem" }}>⚠️</span>
+                <div
+                  style={{ fontSize: "1.05rem", fontWeight: 600 }}
+                >
+                  Red Flags (Disclosed Upfront)
+                </div>
+              </div>
+              <div
+                style={{
+                  fontSize: "0.9rem",
+                  opacity: 0.8,
+                  marginBottom: "0.25rem",
+                }}
+              >
+                HR requires that the following known issues be disclosed
+                before proceeding.
+              </div>
+
+              <ul
+                style={{
+                  margin: 0,
+                  paddingLeft: "1.1rem",
+                  fontSize: "0.9rem",
+                  display: "grid",
+                  gap: "0.35rem",
+                }}
+              >
+                {redFlags.map((flag) => (
+                  <li key={flag}>{flag}</li>
+                ))}
+              </ul>
+            </motion.section>
 
             {/* INTERVIEW / QUIZ */}
             <motion.section
               id="interview-section"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
               style={{
                 borderRadius: "1rem",
                 padding: "1.5rem",
@@ -689,7 +836,7 @@ export default function Home() {
                       currentQuestion
                     ].options.map((opt, idx) => (
                       <motion.button
-                        key={opt}
+                        key={opt.text}
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.96, y: 0 }}
                         onClick={() => handleAnswer(idx)}
@@ -839,17 +986,30 @@ export default function Home() {
               )}
             </motion.section>
 
-            {/* FOOTER */}
+            {/* FOOTER / CONTRACT TERMS */}
             <section
               style={{
                 fontSize: "0.8rem",
-                opacity: 0.6,
+                opacity: 0.65,
                 textAlign: "center",
                 paddingBottom: "1rem",
+                marginTop: "0.5rem",
               }}
             >
-              Built by Sid as a joke. Unless it works. Then it&apos;s a
-              case study.
+              <div>
+                Built by Sid as a joke. Unless it works. Then it&apos;s a
+                case study.
+              </div>
+              <div style={{ marginTop: "0.35rem" }}>
+                By proceeding, you acknowledge that:
+                <br />
+                – Candidate will worry about you if you don&apos;t text back.
+                <br />
+                – Spontaneous drives, gym hype, and emotional playlists may
+                occur.
+                <br />
+                – Refunds not available, but cuddles are.
+              </div>
             </section>
           </>
         )}
