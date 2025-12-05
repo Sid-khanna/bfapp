@@ -1045,8 +1045,8 @@ export default function Home() {
                 Next Steps
               </div>
               <div style={{ fontSize: "0.9rem", opacity: 0.8 }}>
-                If this application has passed your initial screening, further communication
-                may proceed through the following verified channels:
+                You’ve passed round one. Phone number unlocks in a later interview stage. 
+                Until then, please use the verified channels below (carrier pigeons currently out of service).
               </div>
             
               <div
