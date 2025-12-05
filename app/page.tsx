@@ -326,7 +326,7 @@ export default function Home() {
                         fontSize: "0.8rem",
                       }}
                     >
-                      📸 @YOUR_INSTAGRAM
+                      📸 @sid_khanna__
                     </a>
                     <a
                       href="mailto:siddharth.khanna1@gmail.com"
@@ -339,7 +339,7 @@ export default function Home() {
                         fontSize: "0.8rem",
                       }}
                     >
-                      📧 YOUR_EMAIL@example.com
+                      📧 Siddharth.Khanna1@gmail.com
                     </a>
                   </div>
 
@@ -1073,7 +1073,7 @@ export default function Home() {
                 >
                   📸 Instagram
                   <div style={{ fontSize: "0.8rem", opacity: 0.7 }}>
-                    @YOUR_INSTAGRAM
+                    @sid_khanna__
                   </div>
                 </a>
             
@@ -1091,7 +1091,7 @@ export default function Home() {
                 >
                   📧 Email
                   <div style={{ fontSize: "0.8rem", opacity: 0.7 }}>
-                    YOUR_EMAIL@example.com
+                    Siddharth.Khanna1@gmail.com
                   </div>
                 </a>
               </div>
