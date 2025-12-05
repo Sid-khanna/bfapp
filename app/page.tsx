@@ -583,24 +583,19 @@ export default function Home() {
               }}
             >
               <div>
-                <div
-                  style={{ fontSize: "1.1rem", fontWeight: 600 }}
-                >
+                <div style={{ fontSize: "1.1rem", fontWeight: 600 }}>
                   Compensation & Benefits (for you)
                 </div>
-                <div
-                  style={{ fontSize: "0.9rem", opacity: 0.8 }}
-                >
+                <div style={{ fontSize: "0.9rem", opacity: 0.8 }}>
                   What you get if you hire this particular boyfriend.
                 </div>
               </div>
-
+            
               <div
                 style={{
-                  display: "flex",
-                  gap: "0.75rem",
-                  overflowX: "auto",
-                  paddingBottom: "0.25rem",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "0.9rem",
                 }}
               >
                 {perks.map((perk) => (
@@ -608,9 +603,7 @@ export default function Home() {
                     key={perk}
                     whileHover={{ y: -4, scale: 1.02 }}
                     style={{
-                      minWidth: "240px",
-                      maxWidth: "260px",
-                      padding: "0.9rem",
+                      padding: "0.95rem",
                       borderRadius: "0.9rem",
                       background: "rgba(15,23,42,0.95)",
                       border: "1px solid rgba(51,65,85,1)",
@@ -622,6 +615,7 @@ export default function Home() {
                 ))}
               </div>
             </motion.section>
+
 
             {/* INTERVIEW / QUIZ */}
             <motion.section
