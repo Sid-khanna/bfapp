@@ -621,7 +621,7 @@ export default function Home() {
                   gap: "0.75rem",
                 }}
               >
-                {["/sid_pic_1.jpeg", "/pic2.jpg", "/pic3.jpg"].map((src) => (
+                {["/sid_pic_1.jpg", "/sid_pic_2.jpeg", "/sid_pic_3.jpg"].map((src) => (
                   <motion.img
                     key={src}
                     src={src}
