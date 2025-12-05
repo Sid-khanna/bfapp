@@ -300,8 +300,8 @@ export default function Home() {
                     }}
                   >
                     Emotionally available. Slightly delusional,
-                    but in a fun way. Now accepting applications for shared
-                    hoodies, playlists, and future inside jokes.
+                    but in a fun way. I fall with intention and 
+                    a little bit of recklessness.
                   </div>
                                     <div
                     style={{
