@@ -32,31 +32,38 @@ const interviewQuestions = [
   {
     question: "Ideal Sunday with me?",
     options: [
-      "Coffee + walk",
-      "Gym + food",
-      "Couch, shows, and ordering in",
-      "Spontaneous adventure day",
+      { text: "Coffee + walk", score: 10 },
+      { text: "Gym + food", score: 10 },
+      { text: "Couch, shows, and ordering in", score: 10 },
+      { text: "Spontaneous adventure day", score: 10 }, 
     ],
   },
   {
     question: "When we argue, what’s your style?",
     options: [
-      "Talk it out now",
-      "Need 10–30 mins then talk",
-      "Send memes first, then talk",
-      "Disappear for 2 days (wrong answer btw)",
+      { text: "Talk it out now", score: 10 }, 
+      { text: "Need 10–30 mins then talk", score: 10 },
+      { text: "Send memes first, then talk", score: 10 }, 
+      {
+        text: "Disappear for 2 days (wrong answer btw)",
+        score: 0, 
+      },
     ],
   },
   {
     question: "Preferred shared activity?",
     options: [
-      "Cooking together",
-      "Reading / vibing in silence",
-      "Travel + exploring new places",
-      "Watching F1 and pretending we understand strategy",
+      { text: "Cooking together", score: 10 },
+      { text: "Reading / vibing in silence", score: 10 },
+      { text: "Travel + exploring new places", score: 10 },
+      {
+        text: "Watching F1 and pretending we understand strategy",
+        score: 10, 
+      },
     ],
   },
 ];
+
 
 // typewriter hook for intro terminal
 function useTypewriter(lines: string[], typingSpeed = 40, lineDelay = 500) {
@@ -122,9 +129,9 @@ export default function Home() {
     interviewQuestions.forEach((q, i) => {
       const a = answers[i];
       if (a == null) return;
-      // last option = chaotic, so low score
-      score += a === q.options.length - 1 ? 1 : 10;
+      score += q.options[a].score;
     });
+
     return Math.min(
       100,
       Math.round((score / (interviewQuestions.length * 10)) * 100)
@@ -697,7 +704,7 @@ export default function Home() {
                           fontSize: "0.9rem",
                         }}
                       >
-                        {opt}
+                        {opt.text}
                       </motion.button>
                     ))}
                   </div>
