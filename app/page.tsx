@@ -991,9 +991,9 @@ export default function Home() {
                             "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas",
                         }}
                       >
-                        “I reviewed your boyfriend application and I think
-                        we should schedule a first-round interview
-                        (cafe?).”
+                        “I reviewed your boyfriend application. I’d
+                        like to claim my free matcha/coffee and first-round 
+                        interview.”
                       </div>
                     </div>
 
