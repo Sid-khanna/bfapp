@@ -26,7 +26,9 @@ const perks = [
   "Will listen to you rant about work like it’s a Netflix show",
   "Random messages when something reminds me of you",
   "Built you a whole website, so… commitment is clearly not the issue",
+  "Occasional free matcha runs and, if you’re lucky, a Labubu adoption ceremony",
 ];
+
 
 const interviewQuestions = [
   {
@@ -975,7 +977,7 @@ export default function Home() {
                         opacity: 0.85,
                       }}
                     >
-                      Suggested next step: copy-paste this into Hinge:
+                      Suggested next step: send this me:
                       <div
                         style={{
                           marginTop: "0.5rem",
@@ -991,7 +993,7 @@ export default function Home() {
                       >
                         “I reviewed your boyfriend application and I think
                         we should schedule a first-round interview
-                        (coffee?).”
+                        (cafe?).”
                       </div>
                     </div>
 
